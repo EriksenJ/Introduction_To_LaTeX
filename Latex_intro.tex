@@ -1,0 +1,475 @@
+\documentclass[10pt]{article} 
+\usepackage[english]{babel} 
+\usepackage[utf8]{inputenc} 
+\usepackage{lmodern}
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % A package for inserting figures in your text. 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[official]{eurosym} % Insert euro symbols 
+\addtolength{\oddsidemargin}{-.575in}	% Change the margins 
+\addtolength{\evensidemargin}{-.575in}
+\addtolength{\textwidth}{1.15in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+\usepackage{setspace} % Set the line spacing 
+\onehalfspacing % Used together with this command
+% \doublespacing % Or this one 
+\usepackage[hyphens]{url} % Insert urls 
+\usepackage{hyperref} % Inserting urls or other hyperlinks 
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+\usepackage{array}
+\usepackage{color,soul} 
+\usepackage{rotating} % Tables that appear on a rotated page 
+\usepackage{longtable} % For making tables longer than one page (breaking them up)
+
+
+%Code inclusion
+\usepackage{listings} % A package that lets you insert code in your document. 
+\lstset % Set up a set of parameters for including LaTeX code in the document
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{magenta},
+}
+\renewcommand{\lstlistingname}{Code} % Change the name of listings caption
+
+
+%Bibliography 
+\usepackage[authoryear,round]{natbib} % Natbib is the default citation package I use - there are others - this allow you to insert citations in the text using ex. \cite{}, \citep{}, etc. 
+\usepackage{apalike} % A particular style for reference you can search online for others 
+\bibliographystyle{apalike}	% A particular style for the reference list (bibliography)
+\usepackage{bibentry} % Adding more options for citations - including \bibentry{}, which puts the full reference in the text 
+
+%Header
+\usepackage{fancyhdr} % Package for setting headers in your document 
+\pagestyle{fancy}
+\lhead{}
+\chead{ }
+\rhead{\today}
+
+%Title, author, and date 
+\title{Introduction to using \LaTeX}
+\author{Jesper Eriksen\footnote{Contact: jeri@business.aau.dk}}
+\date{\today}
+
+\begin{document}
+
+\maketitle 
+
+
+\tableofcontents
+
+\newpage
+\section{introduction}
+
+This document is a (very) short introduction to some of the fundamentals in writing in LaTeX.\footnote{Currently, it probably also contains quite a lot of flaws. I will appreciate any suggestions for changes.} Of course, there are already a ton of resources that you can look through to get started with \LaTeX, including \href{https://tobi.oetiker.ch/lshort/lshort.pdf}{The Not so Short Introduction to LaTeX2e} by Tobias Oetiker and his co-authors, or Lars Madsen's \href{https://data.math.au.dk/system/latex/bog/version3/beta/ltxb-2011-09-13-20-10.pdf}{Introduktion Til \LaTeX}. 
+
+I try to provide some of the key elements that you most likely will need to get started writing your semester projects in LaTeX. These include what you need to create your first document, how to insert pictures, tables, and equations, how to make footnotes, creating citations and a reference list, as well as headers for your document. 
+
+Most students starting their university journey have been used to writing in word processors like Word, Google Docs, Pages, or the like. In these types of word proecessors, What You See Is What You Get (WYSIWWYG). LaTeX is slightly different, it is a word processing \textit{language}. Instead of writing your text directly into a document in which you pray that you formatting will stay as you want it and pictures doesn't start jumping pages, you write down commands for how you want LaTeX to write the document, and letting LaTeX take care of making your documents look beautiful. This might seem a bit intimidating, but do not worry, tons of other people have already been in your position and asked the same questions as you are doing now - and many of them have done so online on web pages like \href{https://tex.stackexchange.com/}{stackexchange} where TeX connoisseurs revel in helping out the less experienced. This, of course, means that if you search for whatever your problem is you most likely will find a good answer - fast.   
+
+One of the easiest ways to get started with LaTeX is to  use online editors like \href{https://da.sharelatex.com/}{Sharelatex}. Sharelatex allow you to work without having to install a lot of things on your computer, and also to collaborate on several authors on the same document at the same time (which is particularly handy for group projects).\footnote{As a student at AAU you will have an Institution access that allow you to collaborate with your peers in the same file without overwriting each others work - somewhat similar to Google Docs.}Alternately, if you want to be able to write LaTeX documents locally on your computer, you can find several guides online for installing the LaTeX system together with an editor (such as TeXMaker), and relevant packages online.\footnote{The web page of \href{https://www.latex-project.org/get/}{\textit{The LaTeX Project}} gives you access to the most recent of the distributions (like MikTex and MacTex) that installs all the things you need to get started.}   In this document, I will assume that you use ShareLatex, which means that you will have to make workarounds for some things if you do not.
+
+Time to get started! 
+
+
+
+\newpage
+\section{Setting Up A Basic Document}
+
+	When you log on to Sharelatex, you will notice the option to start a new project. If you click on that option, you will go to a page with three seperate sections. On the righthand side is a pdf document and a large blue bottom saying ``Recompile'' on top. In the center is a section that contains some code, and to the left a register (like a folder on your computer). LaTeX is not a regular word processor like word, where \textit{what you type is what you get}. Instead, LaTeX is a language, from which pdf's are compiled. The language relies on you telling the software what should be in the document, and then the software will produce (compile) a document with those specifications. The specifications include what class of document you are writing (e.g. article, report, etc.), the encoding of the input (utf8 is preferable here if you write in Danish), a title, author, and date. When you have these elements, you can tell the software to begin the document, insert the text you want, and then end the document. Written in LaTeX, these basic elements become 
+
+	
+	\begin{lstlisting}[caption=Example 1]
+		\documentclass{article}
+		\usepackage[utf8]{inputenc}
+
+		\title{Introduction To Latex}
+		\author{Jesper Eriksen}
+		\date{November 2017}
+
+		\begin{document}
+
+		\maketitle
+
+		This is the first text after including a title. 
+
+		\end{document}
+	\end{lstlisting}
+
+	Which, when you compile the code, produces the following text 
+
+	\begin{figure}[H]
+		\caption{Example 1 - document}
+		\label{fig:Ex_1}
+		\centering
+		\includegraphics[width=0.55\textwidth]{Ex_1.jpg}
+	\end{figure}
+
+	The most important thing to notice is that any text you write that should go into the document goes between the \lstinline!\begin{document}! and \lstinline!\end{document}!. Let us call this the main body of the code. Anything else, like the packages you use, graphical settings, the title-, author, and date-setting, etc. goes above these into the \textit{preamble}.
+
+	Next, notice the \lstinline!\maketitle! in the body part of the code. Whenever you want to do something beyond simple text, you will often be starting the code with a \lstinline!\!. As you might guess, the \lstinline!\maketitle! inserts a title together with the name of the author(s) and the date. Other useful statements like this is \lstinline!\tableofcontents!, which produces a table of content, and \lstinline!\bibliography{file}! that can create a bibliography if you have references in your document, as well as a .bibtex file with your references (more on this later). These all go into the main body of the code. 
+
+	Whenever you have added something to the code-side of your document, you need to \textit{recompile} the document. In Sharelatex, simply push the blue button. Doing so tells the website that you want a document created based on the code/text that you have added, and a new document should appear in the window to the right of the code. If it does not, you might have a problem in your code (check for example that you have all the \{ and \}'s and the \textit{	begin} and \textit{end}'s that you need). Sharelatex will also guide you to where any problems might arise through the colored sections that appear around the code (red means you need to check these lines).
+
+	With these things in mind, you should be ready to start compiling you own first document in LaTeX. 
+
+
+\section{Starting New Sections \label{Sections}}
+
+	Most documents contains more than one section, and in many cases you also need subsections (for example for theory A, B, and C, as well as a comparison). 
+
+	You create sections, subsections, and subsubsections in LaTeX using the following commands: 
+
+	\begin{lstlisting}[caption= {Sections, subsection, and subsubsections}]
+		\section{This is a Section}
+
+		    This is text in the section.
+		    
+		\subsection{A Subsection}
+
+		    This would be your text in the subsection. 
+
+		\subsubsection{And a Subsubsection}
+
+		    This is the text in your subsubsection. 
+	\end{lstlisting}
+
+	\begin{figure}[H]
+		\caption{Example 2 - Sections, subsections, and subsubsections}
+		\label{fig:Ex_2}
+		\centering
+		\includegraphics[width=0.85\textwidth]{Ex_2.jpg}
+	\end{figure}
+
+	As you can see, each section is numbered. LaTeX \textit{handles} this for you. In addition, by inserting a \lstinline!\label{textlabel}! in the section command, like this: 
+
+	\begin{lstlisting}
+		\section{This is a Section \label{lab_sections}}
+	\end{lstlisting}
+
+	You can even refer to the section number without having to change it by using the command \lstinline!\ref{lab_sections}!. For example, this is section \ref{Sections}. If you want to know more about all the fascinating ways you can structure your documents, you can have a look \href{https://en.wikibooks.org/wiki/LaTeX/Document_Structure}{here}
+
+
+
+	\section{Figures and Tables}
+
+	Often we have figures and tables that we want to insert in our documents. In Word you just dump the picture in the text and pray that the formatting will not be messed up completely as you continue working on the document. In LaTeX, you tell the software which picture you want, approximately where it should be placed, and then the software will make sure that the document is put in a suitable place. The same, of course goes for tables. 
+
+
+	\subsection{Figures \label{figures}}
+
+	To insert pictures in your text, you will need to add the package ``graphicx'' to the top of your latex document.\footnote{There are of course other alternatives, but graphicx appears to be the standard package.} You do this by inserting \lstinline!\usepackage{graphicx}! above the \lstinline!\begin{document}! command. Next, you need to save the figure, graph, plot or whatever else in a .jpg, .png, or .pdf format and place this file in the same folder as your main .tex document (in ShareLaTeX this is done simply by uploading the file to the main folder you see on the left side panel). You can then include the picture by using the \textit{figure} environment (anything that goes between a \lstinline!\begin{something}! and \lstinline!\end{something}! is called an environment). Below is an example of latex code that inserts a picture of Aalborg University which I saved in the same place as the .tex file. 
+
+	\begin{lstlisting}[caption= {Figures}]
+		\begin{figure}[H]
+			\caption{A picture of AAU}
+			\label{fig:AAU}
+			
+			\centering
+			\includegraphics[width=0.85\textwidth]{Aalborg_university.jpg}
+		\end{figure}
+	\end{lstlisting}
+
+	\begin{figure}[H]
+		\caption{A Picture of AAU}
+		\label{fig:AAU}
+		\centering
+		\includegraphics[width=0.85\textwidth]{Aalborg_university.jpg}
+	\end{figure}
+
+
+	\noindent In the figure environment you include a picture by using the \lstinline!\includegraphics[width=0.85\textwidth]{Ex.jpg}! command, where $[width = \dots]$ determines the width of the picture, and ${Aalborg \_university.jpg}$ is the file we want to include. What goes in between the $[]$ are called options - beyond determining width, you can also set the height, rotate the picture and other things by putting options in here.  
+
+	The figure environment also takes options. Here I have inserted $H$ to tell the software that I want the picture \textit{H}ere. Alternatives that gives more flexibility are $htbp$ and $h$. There are also plenty more options that you can play around with. 
+
+	To include a caption for the figure, we can use the command \lstinline!\caption{something}!. LaTeX again takes care of numbering the figures, and you can refer to the specific figure with \lstinline!\ref{fig:AAU}! like this \ref{fig:AAU}. 
+
+	You might also note the \lstinline!\centering! command. This tells the software that within this enviroment, it should center everything. Leaving it out would render the picture to the left like in figure \ref{fig:AAU_left}.
+
+	\begin{figure}[H]
+		\caption{A Picture of AAU}
+		\label{fig:AAU_left}
+		\includegraphics[width=0.85\textwidth]{Aalborg_university.jpg}
+	\end{figure}
+
+
+	There are many more options for figures, including setting pictures up in groups, allowing for wrapping text around the pictures and much more. You should have a look \href{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}{here}  if you want to know more. 
+
+
+\subsection{Tables}
+
+	Tables, for example from summary statistics, regressions, or perhaps just showing some different concepts in relation to each other, are another often appearing aspect in our writing. Like for figures, there is a specific environment for tables. Actually, tables require two of them (for the most common table you will meet): the outer $table$ environment, and the inner $tabular$ environment. In addition, tables also have a rather specific syntax to them, which consists of \& and $\backslash \backslash$'s. As a new user, you could probably make your life easier by using a site like \href{https://www.tablesgenerator.com/}{tablesgenerator.com} to create the at times intricate tables. 
+
+	As an example table, we can look at the following table 
+
+
+	\begin{lstlisting}[caption= {2-by-2 table}]
+		\begin{table}[H]
+			\centering
+			\caption{A cell-table}
+			\label{tab:tab1}
+				\begin{tabular}{lc}
+
+				\\ 
+				\hline
+				Cell 1 & Cell 2 \\
+				Cell 3 & Cell 4 \\
+				\hline 
+			\end{tabular}
+		\end{table}
+	\end{lstlisting}
+
+	\begin{table}[H]
+	\centering
+	\caption{2-by-2 table}
+		\label{tab:tab1l}
+		\begin{tabular}{lc}
+
+		\\ 
+		\hline
+		Cell 1 & Cell 2 \\
+		Cell 3 & Cell 4 \\
+		\hline 
+		\end{tabular}
+	\end{table}
+	
+
+	Firstly, notice the $table$ environment. It takes a placement option like the figures in section \ref{figures}, and within it we can also use \lstinline!\centering! to center the table, \lstinline!\caption{text}! to add a caption, and \lstinline!\label{text}! to refer to the table. 
+
+	To actually create the table, we use the $tabular$ environment. The tabular environment takes a special type of options put in \{\}. In this, we insert letters for each column in the table. The options are $l$ for left-adjusted, $c$ for centered, and $r$ for right-adjusted columns. In the example I have $lc$, which creates two columns. The first left-adjusted, the second centered. 
+
+	Within the $tabular$ environment we put the actual table. $\backslash\backslash$ moves you to the next row in the table, and \& moves you to the next cell in the table. Between these you put the content of each cell. You can use \lstinline!\hline! to insert a horizontal line across the table (these look particularly good in the top of the table, and not so good in the middle of the table). 
+
+	Of course, there are many options for developing the table, including merging cells and adding text by using \lstinline!\multicolumn{#cols spanned}{lcr-adjustment}{Text}!, and adding vertical lines using \lstinline!\vline!. You can also create tables that span several pages by using the $longtable$ environment (make a google search for this, if you need it). 
+
+	For more information on how to write tables in LaTeX, you could have a look \href{https://en.wikibooks.org/wiki/LaTeX/Tables}{here}. 
+
+
+
+\section{Listings \label{listings}}
+
+	Once in a while we also want bullet point lists, or perhaps numbered sections. The simplest ways to create these are by using the $itemize$ and $enumerate$ environments. 
+
+	For example, to create a bullet point list in two layers, we can write 
+
+
+	\begin{lstlisting}[caption= {Item-list}]
+		\begin{itemize}
+			\item This is the first item 
+			\item this is the second item
+			\begin{itemize}
+				\item This is an item within an item
+			\end{itemize}
+		\end{itemize}
+	\end{lstlisting}
+
+		\begin{itemize}
+			\item This is the first item 
+			\item this is the second item
+			\begin{itemize}
+				\item This is an item within an item
+			\end{itemize}
+		\end{itemize}
+
+	Note that for each new item in the list, we have to write $\backslash item$. We can also embed sub-lists in the list by starting a new itemize environment. 
+
+	You can make enumerated lists in a very similar way - you simply need to change $itemize$ with $enumerate$ in the code: 
+
+	\begin{lstlisting}[caption= {Enumerate-list}]
+		\begin{enumerate}
+			\item This is the first item 
+			\item this is the second item
+			\begin{enumerate}
+				\item This is an item within an item
+			\end{enumerate}
+		\end{enumerate}
+	\end{lstlisting}
+
+	\begin{enumerate}
+		\item This is the first item 
+		\item this is the second item
+		\begin{enumerate}
+			\item This is an item within an item
+		\end{enumerate}
+	\end{enumerate}
+
+
+	The two types of lists can also be used together. For example, an enumerated list within an itemized list would be 
+
+
+	\begin{lstlisting}[caption= {Item and enumerate-list}]
+		\begin{itemize}
+			\item This is the first item 
+			\item this is the second item
+			\begin{enumerate}
+				\item This is an item within an item
+			\end{enumerate}
+		\end{itemize}
+	\end{lstlisting}
+
+	\begin{itemize}
+		\item This is the first item 
+		\item this is the second item
+		\begin{enumerate}
+			\item This is an item within an item
+		\end{enumerate}
+	\end{itemize}
+
+
+	There are also many more options in terms of creating lists (including descriptions, and specially numbered enumerations), but this should get you started. You can always search online for any of the many other ways to create lists, but a general reference is \href{https://en.wikibooks.org/wiki/LaTeX/List_Structures}{this}.
+
+
+\section{Equations}
+
+Writing equations in LaTeX is a particular joy for many users simply because of how much better an equation written in LaTeX looks that your standard word processor. 
+
+Firstly, to write mathematical expressions in your document, you will need to add the following packages to your preamble:
+
+	\begin{lstlisting}[caption= {Equation}]
+		\usepackage{amsmath}
+		\usepackage{amsfonts}
+		\usepackage{amssymb}
+	\end{lstlisting}
+
+To write an equation on it's own line, you can use the $equation$ environment such as 
+
+
+	\begin{lstlisting}[caption= {Equation}]
+		\begin{equation}
+			y^* = \frac{s}{n + \delta}^{\frac{\alpha}{1-\alpha}}
+		\end{equation}
+	\end{lstlisting}
+
+	\begin{equation}
+		y^* = \frac{s}{n + \delta}^{\frac{\alpha}{1-\alpha}}
+	\end{equation}
+
+	If you are instead interested in an inline equation, such as $Y = K^{\alpha} L^{1-\alpha}$, you can use the inline math setting \$\$ to write \lstinline!$Y = K^{\alpha} L^{1-\alpha}$!. 
+
+	You will note that many things requires special commands, including making a fraction \lstinline!\frac{num}{den}!, writing greek letters like \lstinline!\alpha!, or creating a more-than-one-letter exponent (\lstinline!L^{1- \alpha}!). Many of the features you might be interested in are well explained at this \href{https://en.wikibooks.org/wiki/LaTeX/Mathematics}{site}.
+
+
+
+
+
+
+
+\section{Footnotes}
+
+	Academics likes to write footnotes.\footnote{Partly because we just cannot contain ourselves and need to write more than we ought,}\footnote{and partly because some things just really does not fit into the text but are necessary to know.} You can do so particularly easily by using the command \lstinline!\footnote{Text in footnote}!, which would produce\footnote{Text in footnote} as your footnote. 
+
+
+\section{Citations and a Reference List}
+
+	The final thing I will introduce in this document, is how to easily make references in your document, as well as generate a literature list. 
+
+	To produce a citations and a reference list you will need the following things: 
+
+	\begin{itemize}
+		\item A bibtex file with all of your references:
+		\begin{itemize}
+		 	\item If you are using Mendeley, you can make Mendeley create a file with all of you references, which you can upload to Sharelatex. Here is how to do it: 
+		 	\begin{enumerate}
+		 		\item In Mendeley, go to Tools/Options/bibtex
+		 		\item Allow ``Enable BibTeX syncing''
+		 		\item Choose where the file should be stored.
+		 		\item Locate that file, and upload it to Sharelatex. The file will most likely be names ``library.bib''. If not, either rename it, or change the following code. 
+		 	\end{enumerate}
+		 \end{itemize} 
+		\item In your preamble (the code above the main body), include the following:
+
+			\begin{lstlisting}[caption= {References 1}]
+	\usepackage[authoryear,round]{natbib} 
+	\usepackage{apalike} 
+	\bibliographystyle{apalike}	
+			\end{lstlisting}
+
+			Here the first package, natbib, is the one that will allow you to make references. apalike is a citations type package (this one allows you to choose the style your references - this one is the reference style according to the American Psychological Association). Finally, the last part sets the styling of the bibliography, or list of references at the end of the document. This, of course, can also be changed. 
+
+		\item At the place in your main body, where you want your references, include the following: 
+
+
+			\begin{lstlisting}[caption= {References 2}]
+	\bibliography{library}
+			\end{lstlisting}
+
+			This will gather all of your references from the bibtex file that you collected from Mendeley before. 
+
+		\item Finally, you are now ready to include citations in your text! natbib has several commands that allows for different ways of doing so. Each one relies on the citation key that you specified for the reference in Mendeley when creating the reference. For example, you can include an author (year) reference like \cite{Marshall1920} by writing  \lstinline!\cite{Marshall1920}! if you have a reference with Marshall's Principles of Economics from 1920 stored in Mendeley with the key Marshall1920. You can also do complete citations in parentheses (Author, year) using \lstinline!\citep{Marshall1920}!, showing up as  \citep{Marshall1920}. 
+
+		\item The reference list. Whenever you cite something in your text, this will now show up in the References list at the place where you put your $bibliography$ command. Have a look below in the section ``References'', where you will find the Marshall citation! 
+
+	\end{itemize}
+
+
+	As with all other things in LaTeX, there are more than many online resources for to get you going with producing references. A good introduction to using the natbib package is provided by Sharelatex at \href{https://da.sharelatex.com/learn/Natbib_citation_styles}{Sharelatex' web site}. 
+
+
+
+\section{Commenting Yours and Others Work}
+	
+	This section contains a final feature that can be quite useful for editing your documents when using Sharelatex. In Word, Google Docs, etc. you often send the document (or a link to it) to others to get their comments. Your friends, mother, or if you are particularly in need of help, dog, can then insert comments in the margin. 
+
+	Sharelatex has a similar feature that allow people with access to the document to make comments in the code-text. Just look in the upper-right part of the code window, and you will find a tiny button that allows people to add comments. 
+
+
+
+
+
+
+
+
+
+
+\section{List of Resources}
+
+
+
+	All of the resources that I have mentioned in the document above are collected here together with their links. If you have suggestions for something that should be added or find a link that does not work, do send me an email, and I will put it on the list or fix the link. 
+
+	\begin{itemize}
+		\item Sharelatex: \url{https://da.sharelatex.com}
+		\begin{itemize}
+			\item Their documentation side with plenty of help to get started writing in LaTeX: \url{https://da.sharelatex.com/learn/Main_Page}
+		\end{itemize}
+
+		\item Tobias Oetiker's ``Not so Short Introduction to LaTeX2e'': \url{https://tobi.oetiker.ch/lshort/lshort.pdf}
+
+		\item Lars Madsen's ``Introduktion til LaTeX'': \url{https://data.math.au.dk/system/latex/bog/version3/beta/ltxb-2011-09-13-20-10.pdf}
+
+		\item The LaTeX Project website - a resource for getting the latest version of LaTeX, packages, and an editor for you personal computer: \url{https://www.latex-project.org/get/}
+
+		\item A reference for handling figures in your document: \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
+
+		\item Sections, chapters, paragraphs, and other ways of partitioning your document: \url{https://en.wikibooks.org/wiki/LaTeX/Document_Structure}
+
+		\item Tablesgenerator - your website for making any table to input in LaTeX without having to struggle (it even takes excel files!): \url{https://www.tablesgenerator.com/}
+
+		\item For general information on how to write tables in LaTeX: \url{https://en.wikibooks.org/wiki/LaTeX/Tables#.40-expressions}
+
+		\item Lists and enumerations in LateX? Look here: \url{https://en.wikibooks.org/wiki/LaTeX/List_Structures}
+
+		\item Math in Latex: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
+
+		\item An introduction to references and bibliographies in LaTeX: \url{https://da.sharelatex.com/learn/Bibliography_management_with_bibtex}
+		
+		\item Citing in your text using the natbib package: \url{https://da.sharelatex.com/learn/Natbib_citation_styles}
+	\end{itemize}
+
+\newpage
+\bibliography{library}
+
+
+
+
+
+
+\end{document}
