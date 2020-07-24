@@ -1,0 +1,14 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}introduction}{2}{section.1}% 
+\contentsline {section}{\numberline {2}Setting Up A Basic Document}{3}{section.2}% 
+\contentsline {section}{\numberline {3}Starting New Sections }{4}{section.3}% 
+\contentsline {section}{\numberline {4}Figures and Tables}{5}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Figures }{5}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Tables}{6}{subsection.4.2}% 
+\contentsline {section}{\numberline {5}Listings }{7}{section.5}% 
+\contentsline {section}{\numberline {6}Equations}{8}{section.6}% 
+\contentsline {section}{\numberline {7}Footnotes}{9}{section.7}% 
+\contentsline {section}{\numberline {8}Citations and a Reference List}{9}{section.8}% 
+\contentsline {section}{\numberline {9}R and \LaTeX }{11}{section.9}% 
+\contentsline {section}{\numberline {10}Commenting Yours and Others Work}{18}{section.10}% 
+\contentsline {section}{\numberline {11}List of Resources}{18}{section.11}% 

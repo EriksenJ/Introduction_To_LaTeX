@@ -75,7 +75,7 @@ I try to provide some of the key elements that you most likely will need to get 
 
 Most students starting their university journey have been used to writing in word processors like Word, Google Docs, Pages, or the like. In these types of word proecessors, What You See Is What You Get (WYSIWWYG). LaTeX is slightly different, it is a word processing \textit{language}. Instead of writing your text directly into a document in which you pray that you formatting will stay as you want it and pictures doesn't start jumping pages, you write down commands for how you want LaTeX to write the document, and letting LaTeX take care of making your documents look beautiful. This might seem a bit intimidating, but do not worry, tons of other people have already been in your position and asked the same questions as you are doing now - and many of them have done so online on web pages like \href{https://tex.stackexchange.com/}{stackexchange} where TeX connoisseurs revel in helping out the less experienced. This, of course, means that if you search for whatever your problem is you most likely will find a good answer - fast.   
 
-One of the easiest ways to get started with LaTeX is to  use online editors like \href{https://da.sharelatex.com/}{Sharelatex}. Sharelatex allow you to work without having to install a lot of things on your computer, and also to collaborate on several authors on the same document at the same time (which is particularly handy for group projects).\footnote{As a student at AAU you will have an Institution access that allow you to collaborate with your peers in the same file without overwriting each others work - somewhat similar to Google Docs.}Alternately, if you want to be able to write LaTeX documents locally on your computer, you can find several guides online for installing the LaTeX system together with an editor (such as TeXMaker), and relevant packages online.\footnote{The web page of \href{https://www.latex-project.org/get/}{\textit{The LaTeX Project}} gives you access to the most recent of the distributions (like MikTex and MacTex) that installs all the things you need to get started.}   In this document, I will assume that you use ShareLatex, which means that you will have to make workarounds for some things if you do not.
+One of the easiest ways to get started with LaTeX is to  use online editors like \href{https://da.Overleaf.com/}{Overleaf}. Overleaf allow you to work without having to install a lot of things on your computer, and also to collaborate on several authors on the same document at the same time (which is particularly handy for group projects).\footnote{As a student at AAU you will have an Institution access that allow you to collaborate with your peers in the same file without overwriting each others work - somewhat similar to Google Docs.}Alternately, if you want to be able to write LaTeX documents locally on your computer, you can find several guides online for installing the LaTeX system together with an editor (such as TeXMaker), and relevant packages online.\footnote{The web page of \href{https://www.latex-project.org/get/}{\textit{The LaTeX Project}} gives you access to the most recent of the distributions (like MikTex and MacTex) that installs all the things you need to get started.}   In this document, I will assume that you use Overleaf, which means that you will have to make workarounds for some things if you do not.
 
 Time to get started! 
 
@@ -84,7 +84,7 @@ Time to get started!
 \newpage
 \section{Setting Up A Basic Document}
 
-	When you log on to Sharelatex, you will notice the option to start a new project. If you click on that option, you will go to a page with three seperate sections. On the righthand side is a pdf document and a large blue bottom saying ``Recompile'' on top. In the center is a section that contains some code, and to the left a register (like a folder on your computer). LaTeX is not a regular word processor like word, where \textit{what you type is what you get}. Instead, LaTeX is a language, from which pdf's are compiled. The language relies on you telling the software what should be in the document, and then the software will produce (compile) a document with those specifications. The specifications include what class of document you are writing (e.g. article, report, etc.), the encoding of the input (utf8 is preferable here if you write in Danish), a title, author, and date. When you have these elements, you can tell the software to begin the document, insert the text you want, and then end the document. Written in LaTeX, these basic elements become 
+	When you log on to Overleaf, you will notice the option to start a new project. If you click on that option, you will go to a page with three seperate sections. On the righthand side is a pdf document and a large blue bottom saying ``Recompile'' on top. In the center is a section that contains some code, and to the left a register (like a folder on your computer). LaTeX is not a regular word processor like word, where \textit{what you type is what you get}. Instead, LaTeX is a language, from which pdf's are compiled. The language relies on you telling the software what should be in the document, and then the software will produce (compile) a document with those specifications. The specifications include what class of document you are writing (e.g. article, report, etc.), the encoding of the input (utf8 is preferable here if you write in Danish), a title, author, and date. When you have these elements, you can tell the software to begin the document, insert the text you want, and then end the document. Written in LaTeX, these basic elements become 
 
 	
 	\begin{lstlisting}[caption=Example 1]
@@ -117,7 +117,7 @@ Time to get started!
 
 	Next, notice the \lstinline!\maketitle! in the body part of the code. Whenever you want to do something beyond simple text, you will often be starting the code with a \lstinline!\!. As you might guess, the \lstinline!\maketitle! inserts a title together with the name of the author(s) and the date. Other useful statements like this is \lstinline!\tableofcontents!, which produces a table of content, and \lstinline!\bibliography{file}! that can create a bibliography if you have references in your document, as well as a .bibtex file with your references (more on this later). These all go into the main body of the code. 
 
-	Whenever you have added something to the code-side of your document, you need to \textit{recompile} the document. In Sharelatex, simply push the blue button. Doing so tells the website that you want a document created based on the code/text that you have added, and a new document should appear in the window to the right of the code. If it does not, you might have a problem in your code (check for example that you have all the \{ and \}'s and the \textit{	begin} and \textit{end}'s that you need). Sharelatex will also guide you to where any problems might arise through the colored sections that appear around the code (red means you need to check these lines).
+	Whenever you have added something to the code-side of your document, you need to \textit{recompile} the document. In Overleaf, simply push the blue button. Doing so tells the website that you want a document created based on the code/text that you have added, and a new document should appear in the window to the right of the code. If it does not, you might have a problem in your code (check for example that you have all the \{ and \}'s and the \textit{	begin} and \textit{end}'s that you need). Overleaf will also guide you to where any problems might arise through the colored sections that appear around the code (red means you need to check these lines).
 
 	With these things in mind, you should be ready to start compiling you own first document in LaTeX. 
 
@@ -166,7 +166,7 @@ Time to get started!
 
 	\subsection{Figures \label{figures}}
 
-	To insert pictures in your text, you will need to add the package ``graphicx'' to the top of your latex document.\footnote{There are of course other alternatives, but graphicx appears to be the standard package.} You do this by inserting \lstinline!\usepackage{graphicx}! above the \lstinline!\begin{document}! command. Next, you need to save the figure, graph, plot or whatever else in a .jpg, .png, or .pdf format and place this file in the same folder as your main .tex document (in ShareLaTeX this is done simply by uploading the file to the main folder you see on the left side panel). You can then include the picture by using the \textit{figure} environment (anything that goes between a \lstinline!\begin{something}! and \lstinline!\end{something}! is called an environment). Below is an example of latex code that inserts a picture of Aalborg University which I saved in the same place as the .tex file. 
+	To insert pictures in your text, you will need to add the package ``graphicx'' to the top of your latex document.\footnote{There are of course other alternatives, but graphicx appears to be the standard package.} You do this by inserting \lstinline!\usepackage{graphicx}! above the \lstinline!\begin{document}! command. Next, you need to save the figure, graph, plot or whatever else in a .jpg, .png, or .pdf format and place this file in the same folder as your main .tex document (in Overleaf this is done simply by uploading the file to the main folder you see on the left side panel). You can then include the picture by using the \textit{figure} environment (anything that goes between a \lstinline!\begin{something}! and \lstinline!\end{something}! is called an environment). Below is an example of latex code that inserts a picture of Aalborg University which I saved in the same place as the .tex file. 
 
 	\begin{lstlisting}[caption= {Figures}]
 		\begin{figure}[H]
@@ -376,12 +376,12 @@ To write an equation on it's own line, you can use the $equation$ environment su
 	\begin{itemize}
 		\item A bibtex file with all of your references:
 		\begin{itemize}
-		 	\item If you are using Mendeley, you can make Mendeley create a file with all of you references, which you can upload to Sharelatex. Here is how to do it: 
+		 	\item If you are using Mendeley, you can make Mendeley create a file with all of you references, which you can upload to Overleaf. Here is how to do it: 
 		 	\begin{enumerate}
 		 		\item In Mendeley, go to Tools/Options/bibtex
 		 		\item Allow ``Enable BibTeX syncing''
 		 		\item Choose where the file should be stored.
-		 		\item Locate that file, and upload it to Sharelatex. The file will most likely be names ``library.bib''. If not, either rename it, or change the following code. 
+		 		\item Locate that file, and upload it to Overleaf. The file will most likely be names ``library.bib''. If not, either rename it, or change the following code. 
 		 	\end{enumerate}
 		 \end{itemize} 
 		\item In your preamble (the code above the main body), include the following:
@@ -410,15 +410,49 @@ To write an equation on it's own line, you can use the $equation$ environment su
 	\end{itemize}
 
 
-	As with all other things in LaTeX, there are more than many online resources for to get you going with producing references. A good introduction to using the natbib package is provided by Sharelatex at \href{https://da.sharelatex.com/learn/Natbib_citation_styles}{Sharelatex' web site}. 
+	As with all other things in LaTeX, there are more than many online resources for to get you going with producing references. A good introduction to using the natbib package is provided by Overleaf at \href{https://da.Overleaf.com/learn/Natbib_citation_styles}{Overleaf' web site}. 
+
+
+
+
+
+\newpage
+\section{R and \LaTeX}
+
+	This section gives a short introduction to including tables created using R and the Stargazer and ggplot2 packages.
+
+	\include{Tables/Summary_1}
+
+	\include{Tables/Summary_2}
+
+	\include{Tables/Diff_wages_1}
+
+	\include{Tables/Diff_wages_2}
+
+	\include{Tables/Diff_table}
+
+	\include{Tables/DiD_estimates}
+
+
+
+
+
 
 
 
 \section{Commenting Yours and Others Work}
 	
-	This section contains a final feature that can be quite useful for editing your documents when using Sharelatex. In Word, Google Docs, etc. you often send the document (or a link to it) to others to get their comments. Your friends, mother, or if you are particularly in need of help, dog, can then insert comments in the margin. 
+	This section contains a final feature that can be quite useful for editing your documents when using Overleaf. In Word, Google Docs, etc. you often send the document (or a link to it) to others to get their comments. Your friends, mother, or if you are particularly in need of help, dog, can then insert comments in the margin. 
 
-	Sharelatex has a similar feature that allow people with access to the document to make comments in the code-text. Just look in the upper-right part of the code window, and you will find a tiny button that allows people to add comments. 
+	Overleaf has a similar feature that allow people with access to the document to make comments in the code-text. Just look in the upper-right part of the code window, and you will find a tiny button that allows people to add comments. 
+
+
+
+
+
+
+
+
 
 
 
@@ -436,9 +470,9 @@ To write an equation on it's own line, you can use the $equation$ environment su
 	All of the resources that I have mentioned in the document above are collected here together with their links. If you have suggestions for something that should be added or find a link that does not work, do send me an email, and I will put it on the list or fix the link. 
 
 	\begin{itemize}
-		\item Sharelatex: \url{https://da.sharelatex.com}
+		\item Overleaf: \url{https://overleaf.com}
 		\begin{itemize}
-			\item Their documentation side with plenty of help to get started writing in LaTeX: \url{https://da.sharelatex.com/learn/Main_Page}
+			\item Their documentation side with plenty of help to get started writing in LaTeX: \url{https://overleaf.com/learn/Main_Page}
 		\end{itemize}
 
 		\item Tobias Oetiker's ``Not so Short Introduction to LaTeX2e'': \url{https://tobi.oetiker.ch/lshort/lshort.pdf}
@@ -459,13 +493,15 @@ To write an equation on it's own line, you can use the $equation$ environment su
 
 		\item Math in Latex: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
 
-		\item An introduction to references and bibliographies in LaTeX: \url{https://da.sharelatex.com/learn/Bibliography_management_with_bibtex}
+		\item An introduction to references and bibliographies in LaTeX: \url{https://da.Overleaf.com/learn/Bibliography_management_with_bibtex}
 		
-		\item Citing in your text using the natbib package: \url{https://da.sharelatex.com/learn/Natbib_citation_styles}
+		\item Citing in your text using the natbib package: \url{https://da.Overleaf.com/learn/Natbib_citation_styles}
 	\end{itemize}
 
 \newpage
 \bibliography{library}
+
+
 
 
 
